@@ -1,0 +1,55 @@
+<PulseInterface>:
+    BoxLayout:
+        width: root.width
+        height: root.height
+        pos:root.pos        
+        orientation: 'vertical'    
+        BoxLayout:
+            padding: 10
+            spacing: 10
+            size_hint_y: 5
+            orientation: 'vertical'
+            BoxLayout:
+                orientation: 'horizontal'        
+                ToggleButton:
+                    group: 'pulse_shape'
+                    text: 'Soliton'
+                    state: 'down'
+                    font_size: '20sp'          
+                ToggleButton:
+                    group: 'pulse_shape'
+                    text: 'Gaussian'
+                    font_size: '20sp'
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    text: 'Wavelength [nm]'
+                    font_size: '20sp' 
+                NumpadInput:
+                    id: wavelength
+                    numpad: root.numpad
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    text: 'FWHM [fs]'
+                    font_size: '20sp'           
+                NumpadInput:
+                    id: fwhm
+                    numpad: root.numpad
+                    font_size: '20sp'
+            BoxLayout:
+                Label:
+                    text: 'Bandwidth [nm]'
+                    font_size: '20sp'
+                NumpadInput:
+                    id: bandwidth
+                    numpad: root.numpad
+                    font_size: '20sp'
+                    
+                
+           
+        
+
+
+
+

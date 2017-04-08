@@ -1,0 +1,28 @@
+<MenuButton@Button>:
+    font_size: '40sp'
+    bold: True
+    text: 'Menu'
+    on_press:  root.app.goto_screen("menu")
+
+
+
+
+<MainMenu>:
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: "Choose Category"
+            font_size: '20sp'         
+        Button:
+            text: 'Bandwidth FWHM Conversion'
+            font_size: '20sp'
+            on_press: root.app.goto_screen("bandwidth")
+        Button:
+            text: 'Power'
+            font_size: '20sp'
+            on_press: root.app.goto_screen("power")
+        Button:
+            text: 'NLS'
+            font_size: '20sp'
+            on_press: root.app.goto_screen("nls")
+         
