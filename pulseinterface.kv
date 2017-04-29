@@ -29,8 +29,9 @@
                     font_size: '20sp' 
                 NumpadInput:
                     id: wavelength
+                    name: 'wavelength'
                     numpad: root.numpad
-                    on_text: root.update_wavelength()
+                    on_text: root.update_wavelength() 
             BoxLayout:
                 orientation: 'horizontal'
                 Label:
@@ -38,15 +39,17 @@
                     font_size: '20sp'                          
                 NumpadInput:
                     id: fwhm
+                    name: 'fwhm'
                     numpad: root.numpad
-                    font_size: '20sp'
-                    on_text: root.update_fwhm()
+                    font_size: '20sp'                   
+                    on_text: root.update_fwhm() 
             BoxLayout:
                 Label:
                     text: 'Bandwidth [nm]'
                     font_size: '20sp'
                 NumpadInput:
                     id: bandwidth
+                    name: 'bandwidth'
                     numpad: root.numpad
                     font_size: '20sp'
                     on_text: root.update_bandwidth()

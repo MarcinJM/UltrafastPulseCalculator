@@ -9,9 +9,10 @@ from kivy.lang import Builder
 from numpad import Numpad, NumpadInput
 
 
-# so we can easliy import numpad into the main file
-#Builder.load_file('numpad.kv')
 Builder.load_file('pulseinterface.kv')
+
+
+
 
 class Pulse():
     def __init__(self,**kwargs): 
@@ -36,6 +37,7 @@ class Pulse():
 class PulseInterface(BoxLayout):
     numpad = ObjectProperty()
     pulse = ObjectProperty()
+    active_input = StringProperty('')
 
     def __init__(self,**kwargs):
         super(PulseInterface, self).__init__(**kwargs)
@@ -61,33 +63,49 @@ class PulseInterface(BoxLayout):
         
 
     def set_soliton(self):
-        print 'soliton'
+        self.numpad.active_input = ''
         self.pulse.time_bandwidth_product = 0.315
+        # keep fwhm recalculate bandwidth
+        self.pulse.calculate_bandwidth()
+        self.set_bandwidth()        
         
 
     def set_gaussian(self):
-        self.pulse.time_bandwidth_product = 0.44 
+        self.numpad.active_input = ''        
+        self.pulse.time_bandwidth_product = 0.44
+        # keep fwhm recalculate bandwidth
+        self.pulse.calculate_bandwidth()
+        self.set_bandwidth()
 
     def update_wavelength(self):
         try:
             self.pulse.lam_center = float(self.ids['wavelength'].text)*1e-9
+            # keep fwhm recalculate bandwidth
+            self.pulse.calculate_bandwidth()
+            self.set_bandwidth()
         except:
             pass
 
     def update_fwhm(self):
         try:            
-            self.pulse.fwhm = float(self.ids['fwhm'].text)*1e-15
-            self.pulse.calculate_bandwidth()
-            self.set_bandwidth()
+            if self.numpad.active_input == 'fwhm':
+                self.pulse.fwhm = float(self.ids['fwhm'].text)*1e-15
+                self.pulse.calculate_bandwidth()
+                self.set_bandwidth()
+            else:
+                pass
         except:
             pass  #this is needed for initilization
 
     def update_bandwidth(self):
-        try:            
-            self.pulse.bandwidth = float(self.ids['bandwidth'].text)*1e-9    
-            self.pulse.calculate_fwhm()
-            self.set_fwhm()
-            
+        try:
+            if self.numpad.active_input == 'bandwidth':                
+                self.pulse.bandwidth = float(self.ids['bandwidth'].text)*1e-9    
+                self.pulse.calculate_fwhm()
+                self.set_fwhm()
+            else:
+                pass
+                
         except:           
             pass  #this is needed for initilization    
 
