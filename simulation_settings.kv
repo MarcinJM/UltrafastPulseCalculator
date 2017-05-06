@@ -1,0 +1,90 @@
+<SliderWithMultipliers>:
+    BoxLayout:
+        width: root.width
+        height: root.height
+        pos: root.pos
+        orientation: 'vertical'
+        padding: 10
+        spacing: 10
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+                text: root.slider_name
+                font_size: '20sp'
+            Label:
+                text: root.value_string
+                font_size: '20sp'
+            ToggleButton:
+                id: button1
+                group: root.slider_name
+                text: root.button1_name
+                state: 'down'
+                font_size: '20sp'
+                on_press: root.set_button1_multiplier()
+            ToggleButton:
+                id: button2
+                group: root.slider_name
+                text: root.button2_name
+                font_size: '20sp'
+                on_press: root.set_button2_multiplier()
+        Slider:
+            id: slider
+            value: root.slider_value
+            #range: root.slider_range
+            range: (1,100)
+            step: root.slider_step
+            font_size: '20sp'
+    
+<PulseWidthSlider@SliderWithMultipliers>:
+    button1_name: 'fs'
+    button2_name: 'ps'
+    slider_name: 'Pulse width'
+
+
+<PulsePowerSlider@SliderWithMultipliers>:
+    button1_name: 'W'
+    button2_name: 'kW'
+    slider_name: 'Peak Power'
+
+<FiberLengthSlider@SliderWithMultipliers>:
+    button1_name: 'cm'
+    button2_name: 'm'
+    slider_name: 'Fiber Length'
+    
+
+    
+
+
+
+
+<SimulationSettings>:
+    BoxLayout:
+        width: root.width
+        height: root.height
+        pos:root.pos
+        orientation: 'vertical'
+        BoxLayout:
+            padding: 10
+            spacing: 10
+            #size_hint_y: 5
+            orientation: 'vertical'
+            PulseWidthSlider:
+            PulsePowerSlider:
+            FiberLengthSlider:
+            BoxLayout:
+                orientation: 'horizontal'
+                ToggleButton:
+                    group: 'pulse_shape'
+                    text: 'Soliton'
+                    state: 'down'
+                    font_size: '20sp'
+                    #on_press: root.set_soliton()
+                ToggleButton:
+                    group: 'pulse_shape'
+                    text: 'Gaussian'
+                    font_size: '20sp'
+                    #on_press: root.set_gaussian()
+	   
+            
+            
+

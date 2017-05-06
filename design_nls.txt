@@ -1,0 +1,6 @@
+
+
+choose fiber type
+choose fiber length
+set input pulse parameters width + peak power
+
