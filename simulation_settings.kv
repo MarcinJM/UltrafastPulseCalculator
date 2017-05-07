@@ -30,26 +30,31 @@
                 on_press: root.set_button2_multiplier()
         Slider:
             id: slider
-            value: root.slider_value
-            range: root.slider_range
-            #range: (1,100)
-            step: root.slider_step
+            value = root.value
+            range = root.range
+            step = root.step
             font_size: '20sp'
     
 <PulseWidthSlider@SliderWithMultipliers>:
     button1_name: 'fs'
+    button1_multiplier = 1e-15
     button2_name: 'ps'
+    button2_multiplier = 1e-12  
     slider_name: 'Pulse width'
 
 
 <PulsePowerSlider@SliderWithMultipliers>:
     button1_name: 'W'
+    button1_multiplier = 1.0
     button2_name: 'kW'
+    button2_multiplier = 1e3
     slider_name: 'Peak Power'
 
 <FiberLengthSlider@SliderWithMultipliers>:
     button1_name: 'cm'
+    button1_multilier = 1e-2
     button2_name: 'm'
+    button2_multiplier = 1.0
     slider_name: 'Fiber Length'
     
 

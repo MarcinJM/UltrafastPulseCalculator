@@ -1,6 +1,7 @@
 from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.uix.label import Label
+from kivy.uix.slider import Slider
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import StringProperty
 from kivy.properties import NumericProperty
@@ -11,16 +12,13 @@ from kivy.lang import Builder
 Builder.load_file('simulation_settings.kv')
 
 
-class SliderWithMultipliers(BoxLayout):
+class SliderWithMultipliers(BoxLayout,Slider):
     slider_name = StringProperty('')
     value_string = StringProperty('')
     button1_name = StringProperty('')
     button1_multiplier = NumericProperty(1.0)
     button2_name = StringProperty('')
     button2_multiplier = NumericProperty(1.0)
-    slider_range = ObjectProperty((1,100))
-    slider_step = NumericProperty(1.0)
-    slider_value = NumericProperty(1.0)
     multiplier_str = StringProperty('')
     multiplier_value = NumericProperty(1.0)
 
@@ -28,7 +26,7 @@ class SliderWithMultipliers(BoxLayout):
     #    self.bind(slider_value = self.set_value_string)
 
     def set_value_string(self,instancce,value):
-        self.value_string = num2str(self.slider_value) + self.multiplier_str
+        self.value_string = num2str(self.value) + self.multiplier_str
         
  
     def set_button1_multiplier(self):
@@ -39,7 +37,8 @@ class SliderWithMultipliers(BoxLayout):
         #self.slider_
 
     def set_button2_multiplier(self):
-        pass
+        self.multiplier_str =self.button2_name
+        self.multiplier = self.button2_multiplier
     
     
   
