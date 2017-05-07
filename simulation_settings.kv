@@ -12,6 +12,7 @@
                 text: root.slider_name
                 font_size: '20sp'
             Label:
+                id: slider_display
                 text: root.value_string
                 font_size: '20sp'
             ToggleButton:
@@ -30,8 +31,8 @@
         Slider:
             id: slider
             value: root.slider_value
-            #range: root.slider_range
-            range: (1,100)
+            range: root.slider_range
+            #range: (1,100)
             step: root.slider_step
             font_size: '20sp'
     

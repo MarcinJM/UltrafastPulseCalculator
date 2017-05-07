@@ -15,19 +15,28 @@ class SliderWithMultipliers(BoxLayout):
     slider_name = StringProperty('')
     value_string = StringProperty('')
     button1_name = StringProperty('')
-    button2_name = StringProperty('')    
-    silder_range = ObjectProperty()
-    slider_step = NumericProperty()
+    button1_multiplier = NumericProperty(1.0)
+    button2_name = StringProperty('')
+    button2_multiplier = NumericProperty(1.0)
+    slider_range = ObjectProperty((1,100))
+    slider_step = NumericProperty(1.0)
+    slider_value = NumericProperty(1.0)
+    multiplier_str = StringProperty('')
+    multiplier_value = NumericProperty(1.0)
 
-    def __init__(self,**args):
-        self.bind(value = self.set_value_string)
+    #def __init__(self,**args):
+    #    self.bind(slider_value = self.set_value_string)
 
     def set_value_string(self,instancce,value):
-        self.value_string = num2str(self.value)
+        self.value_string = num2str(self.slider_value) + self.multiplier_str
         
  
     def set_button1_multiplier(self):
-        pass
+        self.multiplier_str = self.button1_name
+        self.multiplier = self.button1_multiplier
+        # FIXME add behaviour of the value string
+        #self.value_string = num2str(self.slider_value) + self.button1_name
+        #self.slider_
 
     def set_button2_multiplier(self):
         pass

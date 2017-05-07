@@ -1,0 +1,49 @@
+<PowerConversion>:
+    BoxLayout:
+        width: root.width
+        height: root.height
+        pos:root.pos        
+        orientation: 'vertical'    
+        BoxLayout:
+            padding: 10
+            spacing: 10
+            size_hint_y: 5
+            orientation: 'vertical'
+            BoxLayout:
+                Label:
+                    text: 'Input Power'
+                    font_size: '20sp'          
+                NumpadInput:
+                    id: input_power
+                    numpad:root.numpad
+                    font_size: '20sp'
+                    on_text: root.update_dB()
+
+            BoxLayout:
+                Label:		
+                    text: 'Output Power'
+                    font_size: '20sp'          
+                NumpadInput:
+                    id: output_power
+                    numpad:root.numpad
+                    font_size: '20sp'
+                    on_text: root.update_dB()
+
+            BoxLayout:
+                Label:
+                    text: 'dB'
+                    font_size: '20sp'          
+                Label:
+                    id: dB
+                    color: 0,0,0,1
+                    font_size: '20sp'
+                    canvas.before:
+                        Color:
+                            rgba: 1,1,1,1
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size 
+  
+                       
+ 
+   

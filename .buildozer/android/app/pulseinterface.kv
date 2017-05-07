@@ -1,0 +1,63 @@
+<PulseInterface>:
+    BoxLayout:
+        width: root.width
+        height: root.height
+        pos:root.pos        
+        orientation: 'vertical'    
+        BoxLayout:
+            padding: 10
+            spacing: 10
+            size_hint_y: 5
+            orientation: 'vertical'
+            BoxLayout:
+                orientation: 'horizontal'        
+                ToggleButton:
+                    group: 'pulse_shape'
+                    text: 'Soliton'
+                    state: 'down'
+                    font_size: '20sp'
+                    on_press: root.set_soliton()          
+                ToggleButton:
+                    group: 'pulse_shape'
+                    text: 'Gaussian'
+                    font_size: '20sp'
+                    on_press: root.set_gaussian()
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    text: 'Wavelength [nm]'
+                    font_size: '20sp' 
+                NumpadInput:
+                    id: wavelength
+                    name: 'wavelength'
+                    numpad: root.numpad
+                    on_text: root.update_wavelength() 
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    text: 'FWHM [fs]'
+                    font_size: '20sp'                          
+                NumpadInput:
+                    id: fwhm
+                    name: 'fwhm'
+                    numpad: root.numpad
+                    font_size: '20sp'                   
+                    on_text: root.update_fwhm() 
+            BoxLayout:
+                Label:
+                    text: 'Bandwidth [nm]'
+                    font_size: '20sp'
+                NumpadInput:
+                    id: bandwidth
+                    name: 'bandwidth'
+                    numpad: root.numpad
+                    font_size: '20sp'
+                    on_text: root.update_bandwidth()
+                    
+                
+           
+        
+
+
+
+
