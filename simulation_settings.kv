@@ -31,39 +31,7 @@
             id: slider                 
             font_size: '20sp'
     
-<PulseWidthSlider@SliderWithMultipliers>:
-    button1_name: 'fs'
-    button1_range: (10.0,3000.0)
-    button1_step: 10.0
-    button1_multiplier: 1e-15
-    button2_name: 'ps'
-    button2_range: (1.0,100.0)
-    button2_step: 1.0
-    button2_multiplier:  1e-12  
-    slider_name: 'Pulse width'
 
-
-<PulsePowerSlider@SliderWithMultipliers>:
-    button1_name: 'W'
-    button1_multiplier: 1.0
-    button1_range: (10.0,3000.0)
-    button1_step: 10.0
-    button2_name: 'kW'
-    button2_range: (1.0,100.0)
-    button2_step: 1.0
-    button2_multiplier: 1e3
-    slider_name: 'Peak Power'
-
-<FiberLengthSlider@SliderWithMultipliers>:
-    button1_name: 'cm'
-    button1_multilier: 1.0e-2
-    button1_range: (1.0,300.0)
-    button1_step: 1.0
-    button2_name: 'm'
-    button2_range: (1.0,1000.0)
-    button2_step: 1.0
-    button2_multiplier: 1.0
-    slider_name: 'Fiber Length'
 
 <ButtonDropDown>:
     size_hint_y: None
@@ -71,11 +39,11 @@
     height: 44
 
 <MainButtonDropDown>:
-    font_size: '20sp'
-    
+    font_size: '20sp' 
         
     
-<FiberDropDown>:    
+<FiberDropDown>:
+
 
 <SimulationSettings>:
     BoxLayout:
@@ -88,8 +56,11 @@
             spacing: 10
             orientation: 'vertical'
             PulseWidthSlider:
+                simulation_parameters: root.simulation_parameters
             PulsePowerSlider:
-            FiberLengthSlider:            
+                simulation_parameters: root.simulation_parameters
+            FiberLengthSlider:
+                simulation_parameters: root.simulation_parameters
             BoxLayout:
                 orientation: 'horizontal'                
                 ToggleButton:
@@ -97,14 +68,16 @@
                     text: 'Soliton'
                     state: 'down'
                     font_size: '20sp'
-                    #on_press: root.set_soliton()
+                    on_press: root.simulation_parameters.pulse_shape = 'soliton'
                 ToggleButton:
                     group: 'pulse_shape'
                     text: 'Gaussian'
                     font_size: '20sp'
-                    #on_press: root.set_gaussian()
+                    on_press: root.simulation_parameters.pulse_shape = 'gaussian'
                 MainButtonDropDown:
-                    text: 'Fiber type'
+                    simulation_parameters: root.simulation_parameters
+                    multiline: True
+                    text: 'Fiber type \n' + '@ 1550 nm'
                     
                 
   

@@ -110,7 +110,7 @@ class PulseInterface(BoxLayout):
             pass  #this is needed for initilization    
 
 
-
+   
  
 
 class PulseInterfaceApp(App):
@@ -123,8 +123,10 @@ class PulseInterfaceApp(App):
         self.pulse_interface = PulseInterface(numpad = self.numpad,\
                                               pulse = self.pulse,\
                                               size_hint = (1.0,0.5))       
-        self.root.add_widget(self.pulse_interface)     
+
+        self.root.add_widget(self.pulse_interface) 
         self.root.add_widget(self.numpad)
+        
         
      
 if __name__ == '__main__':  
